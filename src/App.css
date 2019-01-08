@@ -26,3 +26,8 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.progress-bar {
+    background-color: cornflowerblue;
+    height: 10px;
+}
