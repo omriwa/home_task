@@ -3,7 +3,8 @@ import * as React from "react";
 import { Transition } from "react-transition-group";
 
 interface IFormProps {
-    in: boolean
+    in: boolean,
+    setProgress: () => void
 }
 
 export default class Form extends React.Component<IFormProps> {
@@ -21,6 +22,7 @@ export default class Form extends React.Component<IFormProps> {
                         {
                             this.props.children
                         }
+                        <button onClick={this.props.setProgress}>next</button>
                     </div>
                 )
             }
