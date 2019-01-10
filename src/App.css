@@ -27,7 +27,47 @@
   to { transform: rotate(360deg); }
 }
 
+/*progress bar*/
+
 .progress-bar {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     background-color: cornflowerblue;
     height: 10px;
+    transition: 750ms width;
+}
+
+/*form*/
+
+.form {
+    border: 0.5px solid gray;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    padding: 2%;
+    margin: 1% 25%;
+    transition: 1s opacity;
+}
+
+.form * {
+    display: block;
+    margin: 0 auto;
+}
+
+/*form animation*/
+.entering {
+    opacity: 0;
+}
+
+.entered {
+    opacity: 1;
+}
+
+.exiting {
+    opacity: 1;
+}
+
+.exited {
+    opacity: 0;
 }

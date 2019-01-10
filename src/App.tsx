@@ -56,10 +56,7 @@ class App extends React.Component<any, IAppState> {
     }
 
     private renderPersonalForm(): any {
-        return <Form
-            in={this.state.progress === 0}
-            setProgress={() => this.setFormProgress(this.state.fullName !== "", 30)}
-        >
+        return <React.Fragment>
             <label>Full Name</label>
             <input
                 required
@@ -68,14 +65,11 @@ class App extends React.Component<any, IAppState> {
                 name="fullName"
                 onChange={this.onInputChange}
             />
-        </Form>
+        </React.Fragment>
     }
 
     private renderContantForm(): any {
-        return <Form
-            in={this.state.progress === 30}
-            setProgress={() => this.setFormProgress(this.state.phone.length === 10 && this.validateEmail(this.state.email), 60)}
-        >
+        return <React.Fragment>
             <label>Phone Number</label>
             <input
                 required
@@ -92,7 +86,7 @@ class App extends React.Component<any, IAppState> {
                 name="email"
                 onChange={this.onInputChange}
             />
-        </Form>
+        </React.Fragment>
     }
 
     private validateEmail(email: string): boolean {
@@ -101,10 +95,7 @@ class App extends React.Component<any, IAppState> {
     }
 
     private renderSalaryForm(): any {
-        return <Form
-            in={this.state.progress === 60}
-            setProgress={() => this.setFormProgress(this.state.salary !== "", 90)}
-        >
+        return <React.Fragment>
             <h4>Salary</h4>
             <label>0-1000</label>
             <input
@@ -141,7 +132,7 @@ class App extends React.Component<any, IAppState> {
                 type="radio"
                 name="salary"
             />
-        </Form>
+        </React.Fragment>
     }
 
     private renderSummeryForm(): any {
@@ -152,18 +143,15 @@ class App extends React.Component<any, IAppState> {
         //get all state keys
         keys = (Object as any).keys(stateCopy);
 
-        return <Form
-            in={this.state.progress === 90}
-            setProgress={() => this.setFormProgress(true, 100)}
-        >
+        return <React.Fragment>
             <h4>Summery</h4>
             {
                 keys.map(key => {
                     return <div>{stateCopy[key]}</div>
                 })
             }
-            
-        </Form>
+
+        </React.Fragment>
     }
 
     private renderForm(): any {
@@ -185,9 +173,43 @@ class App extends React.Component<any, IAppState> {
         return (
             <div className="App">
                 <ProgressBar progress={this.state.progress} />
-                {
-                    this.renderForm()
-                }
+
+                <Form
+                    in={this.state.progress === 0}
+                    setProgress={() => this.setFormProgress(this.state.fullName !== "", 30)}
+                >
+                    {
+                        this.renderPersonalForm()
+                    }
+                </Form>
+
+                <Form
+                    in={this.state.progress === 30}
+                    setProgress={() => this.setFormProgress(this.state.phone.length === 10 && this.validateEmail(this.state.email), 60)}
+                >
+                    {
+                        this.renderContantForm()
+                    }
+                </Form>
+
+                <Form
+                    in={this.state.progress === 60}
+                    setProgress={() => this.setFormProgress(this.state.salary !== "", 90)}
+                >
+                    {
+                        this.renderSalaryForm()
+                    }
+                </Form>
+
+                <Form
+                    in={this.state.progress === 90}
+                    setProgress={() => this.setFormProgress(true, 100)}
+                >
+                    {
+                        this.renderSummeryForm()
+                    }
+                </Form>
+
             </div>
         );
     }
