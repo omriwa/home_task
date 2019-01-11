@@ -29,7 +29,6 @@ class App extends React.Component<any, IAppState> {
         this.renderContantForm = this.renderContantForm.bind(this);
         this.renderSalaryForm = this.renderSalaryForm.bind(this);
         this.renderSummeryForm = this.renderSummeryForm.bind(this);
-        this.renderForm = this.renderForm.bind(this);
         this.setProgress = this.setProgress.bind(this);
         this.onInputChange = this.onInputChange.bind(this);
         this.setFormProgress = this.setFormProgress.bind(this);
@@ -152,21 +151,6 @@ class App extends React.Component<any, IAppState> {
             }
 
         </React.Fragment>
-    }
-
-    private renderForm(): any {
-        switch (this.state.progress) {
-            case 0:
-                return this.renderPersonalForm();
-            case 30:
-                return this.renderContantForm();
-            case 60:
-                return this.renderSalaryForm();
-            case 90:
-                return this.renderSummeryForm();
-            case 100:
-                return <div>finish</div>
-        }
     }
 
     public render() {

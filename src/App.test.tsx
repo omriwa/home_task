@@ -1,9 +1,20 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import App from './App';
+import ProgressBar from "./components/progressBar";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+import * as renderer from 'react-test-renderer';
+
+test("app render", () => {
+    const app = renderer.create(<App />);
+    //check render
+    let tree = app.toJSON();
+    expect(tree).toMatchSnapshot();
 });
+
+test("progress bar", () => {
+    const progressBar = renderer.create(<ProgressBar progress={0} />);
+    //check render
+    let tree = progressBar.toJSON();
+    expect(tree).toMatchSnapshot();
+});
+
